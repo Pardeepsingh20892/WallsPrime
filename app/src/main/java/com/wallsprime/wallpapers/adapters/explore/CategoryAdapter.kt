@@ -26,8 +26,8 @@ class CategoryAdapter (
         fun bind( position: Int,item: UnsplashPhoto?){
 
             binding.apply {
-            val url: String? = item?.urls?.small
-            Glide.with(itemView.context)
+                val url = item?.urls?.small!!
+                Glide.with(itemView.context)
                 .load(url)
                 .centerCrop()
                 .placeholder(R.drawable.ic_load_icon)
@@ -36,7 +36,7 @@ class CategoryAdapter (
 
                 imageViewFav.setImageResource(
                 when {
-                    item!!.favourite -> R.drawable.ic_baseline_favorite_24
+                    item.favourite -> R.drawable.ic_baseline_favorite_24
                     else -> R.drawable.ic_baseline_favorite_border_24_toolbar
                 }
             )
