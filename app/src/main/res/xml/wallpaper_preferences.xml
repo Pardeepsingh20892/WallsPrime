@@ -1,0 +1,101 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <PreferenceCategory
+        app:icon="@drawable/outline_wallpaper_24_setting"
+        app:title="Auto Wallpaper Changer">
+
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="autowallpaperchanger"
+            app:summary="Activate to change wallpaper automatically"
+            app:title="Auto Wallpaper Changer" />
+
+        <Preference
+            app:key="help"
+            app:title="Not Working"
+            app:summary="Click for Help if Auto Wallpaper Changer Not Working">
+            <intent
+        android:action="android.intent.action.VIEW"
+        android:data="https://sites.google.com/view/techsneak-labs/about/auto-wallpaper-changer-not-working" />
+    </Preference>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_outline_style_24"
+        app:title="Wallpaper Source"
+        app:dependency="autowallpaperchanger">
+
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="random"
+            app:summary="Auto change a Random Wallpaper"
+            app:title="Random" />
+
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="favourite"
+            app:summary="Auto changer Wallpaper from Favourite"
+            app:title="Favourite" />
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="category"
+            app:summary="Auto changer Wallpaper from Category"
+            app:title="Category" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/category_default"
+            android:entries="@array/category_entries"
+            android:entryValues="@array/category_values"
+            android:key="categories"
+            android:dependency="category"
+            android:persistent="true"
+            app:summary="Select one or more Category"
+            android:title="Select Category" />
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        app:icon="@drawable/outline_input_24"
+        app:title="Conditions"
+        app:dependency="autowallpaperchanger">
+
+        <ListPreference
+            app:defaultValue="15"
+            app:entries="@array/time_entries"
+            app:entryValues="@array/time_values"
+            app:key="time"
+            app:title="Time Interval"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="both"
+            app:entries="@array/screen_entries"
+            app:entryValues="@array/screen_values"
+            app:key="screentoapply"
+            app:title="Apply on Screen"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="wifi"
+            app:summary="Wallpaper changes only when device connected to WiFI"
+            app:title="WIFI" />
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="charging"
+            app:summary="Wallpaper changes only when device is Charging"
+            app:title="Charging" />
+
+
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fragment"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.wallsprime.wallpapers.ui.main.MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_detailViewFragment"
+            app:destination="@id/detailViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_favouriteFragment_to_detailViewFavouriteFragment"
+            app:destination="@id/detailViewFavouriteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_exploreFragment_to_categoryFragmentExploreFragment"
+            app:destination="@id/categoryFragmentExploreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_wallpaperFragment"
+            app:destination="@id/wallpaperFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_mainFragment_to_settingPerference"
+            app:destination="@id/settingPerference"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailViewFragment"
+        android:name="com.wallsprime.wallpapers.ui.home.DetailViewFragmentHome"
+        tools:layout="@layout/fragment_detail_view_home">
+        <argument
+            android:name="itemPosition"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailViewFavouriteFragment"
+        android:name="com.wallsprime.wallpapers.ui.favourite.DetailViewFavouriteFragment"
+        tools:layout="@layout/fragment_detail_view_favourite">
+        <argument
+            android:name="favouriteItemPosition"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailViewCategoryExploreFragment"
+        android:name="com.wallsprime.wallpapers.ui.explore.DetailViewCategoryExploreFragment"
+        tools:layout="@layout/fragment_detail_view_explore">
+
+        <argument
+            android:name="itemPositionExplore"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragmentExploreFragment"
+        android:name="com.wallsprime.wallpapers.ui.explore.CategoryFragmentExploreFragment"
+        android:label="{collectionName}"
+        tools:layout="@layout/fragment_category_explore">
+        <action
+            android:id="@+id/action_categoryFragmentExploreFragment_to_detailViewCategoryExploreFragment"
+            app:destination="@id/detailViewCategoryExploreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="collectionId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="collectionName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/wallpaperFragment"
+        android:name="com.wallsprime.wallpapers.ui.setting.WallpaperFragment"
+        android:label="Auto Wallpaper Changer" />
+    <fragment
+        android:id="@+id/settingPerference"
+        android:name="com.wallsprime.wallpapers.ui.setting.SettingPerference"
+        android:label="Setting">
+        <action
+            android:id="@+id/action_settingPerference_to_wallpaperFragment"
+            app:destination="@id/wallpaperFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+</navigation>

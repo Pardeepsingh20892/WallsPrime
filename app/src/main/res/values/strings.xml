@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WallsPrime</string>
+    <string name="rate">RATE</string>
+    <string name="share">SHARE</string>
+    <string name="about">ABOUT</string>
+    <string name="privacy">PRIVACY</string>
+</resources>

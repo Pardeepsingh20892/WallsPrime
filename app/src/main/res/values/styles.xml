@@ -1,0 +1,46 @@
+<resources>
+
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle</item>
+    </style>
+
+
+
+
+    <!-- Custom Preference Theme -->
+    <style name="Theme.Flare.PreferenceThemeOverlay"
+        parent="@style/PreferenceThemeOverlay">
+
+        <item name="preferenceFragmentCompatStyle">
+            @style/AppPreferenceFragmentCompatStyle
+        </item>
+    </style>
+
+
+    <!-- Custom Style for PreferenceFragmentCompat -->
+    <style name="AppPreferenceFragmentCompatStyle"
+        parent="@style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/wallpaper_setting</item>
+    </style>
+
+
+
+    <style name="flareToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+
+    <style name="flareToolbarMain" parent="flareToolbar">
+        <item name="logo">@drawable/logo_black</item>
+
+    </style>
+
+
+
+
+
+
+</resources>

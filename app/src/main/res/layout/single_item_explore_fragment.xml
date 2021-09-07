@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewSingleItemCollectionFragment"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+
+    app:cardCornerRadius="5dp">
+
+    <ImageView
+        android:id="@+id/imageViewSingleItemCollectionFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/custom_ripple_effect"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,73 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:icon="@drawable/outline_app_settings_alt_24"
+        app:title="General">
+
+
+        <ListPreference
+            app:defaultValue="default"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:key="theme"
+            app:title="Theme"
+            app:useSimpleSummaryProvider="true" />
+
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="notification"
+            app:summary="Get notifications about Latest Wallpapers"
+            app:title="Notification" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        app:icon="@drawable/outline_image_24"
+        app:title="Wallpaper">
+
+        <Preference
+            app:key="Auto_change_wallpaper"
+            app:summary="Change Wallpaper automatically at a fixed interval"
+            app:title="Auto Wallpaper Changer">
+
+        </Preference>
+
+        <ListPreference
+            app:defaultValue="regular"
+            app:entries="@array/quality_entries"
+            app:entryValues="@array/quality_values"
+            app:key="load_quality"
+            app:title="Load Quality"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="full"
+            app:entries="@array/quality_entries"
+            app:entryValues="@array/quality_values"
+            app:key="download_quality"
+            app:title="Download Quality"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_baseline_privacy_tip_24"
+        app:title="Data and Privacy">
+        <Preference
+            app:key="privacy"
+            app:summary="Privacy and Personal Data usage policy"
+            app:title="Privacy Policy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://sites.google.com/view/techsneak-labs/privacy-policy" />
+        </Preference>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
