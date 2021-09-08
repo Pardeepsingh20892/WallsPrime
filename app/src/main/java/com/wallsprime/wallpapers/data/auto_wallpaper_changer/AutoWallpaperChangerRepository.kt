@@ -11,8 +11,4 @@ class AutoWallpaperChangerRepository@Inject constructor(
 
     private val autoWallpaperChangerDao = unsplashPhotoDb.autoWallpaperChangerDao()
 
-
-    fun  getUnsplashWallpaperCategory(): Flow<List<UnsplashExplore>> = autoWallpaperChangerDao.getUnsplashWallpaperCategory()
-    suspend fun updateUnsplashCategory(photos: UnsplashExplore) = autoWallpaperChangerDao.updateUnsplashCategory(photos)
-
 }

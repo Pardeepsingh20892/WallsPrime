@@ -47,12 +47,10 @@ class HomeRemoteMediator(
         }
 
 
-
             val response = unsplashApi.getPhotos(page, state.config.pageSize)
-            val serverResults = response.body()
+            val serverResults = response.body()!!
 
 
-            if (serverResults != null){
 
 
 
@@ -66,13 +64,12 @@ class HomeRemoteMediator(
                         serverResultPhotos.urls.raw,
                         serverResultPhotos.urls.full,
                         serverResultPhotos.urls.regular,
-                        serverResultPhotos.urls.small,
-                      //  serverResultPhotos.urls.thumb
+                        serverResultPhotos.urls.small
+
                     )
 
 
                     val user = UnsplashUser(
-                       // serverResultPhotos.user.name,
                         serverResultPhotos.user.username
                     )
 
@@ -80,7 +77,6 @@ class HomeRemoteMediator(
 
                     UnsplashPhoto(
                         id = serverResultPhotos.id,
-                      //  description = serverResultPhotos.description,
                         urls = url,
                         user = user,
                         favourite = isFavourite
@@ -117,7 +113,7 @@ class HomeRemoteMediator(
 
 
 
-            }
+
 
 
 

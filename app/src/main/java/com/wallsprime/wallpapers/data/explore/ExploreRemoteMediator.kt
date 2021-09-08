@@ -49,10 +49,8 @@ class ExploreRemoteMediator(
 
 
             val response = unsplashApi.getCollectionPhotos(collectionId,page, state.config.pageSize)
-            val serverResults = response.body()
+            val serverResults = response.body()!!
 
-
-            if (serverResults != null){
 
 
             val favouritePhotos = favouriteDao.getUnsplashFavouritePhotos().first()
@@ -66,13 +64,11 @@ class ExploreRemoteMediator(
                 val url = UnsplashPhotoUrls(serverResultPhotos.urls.raw,
                     serverResultPhotos.urls.full,
                     serverResultPhotos.urls.regular,
-                    serverResultPhotos.urls.small,
-                   // serverResultPhotos.urls.thumb
+                    serverResultPhotos.urls.small
                 )
 
 
                 val user = UnsplashUser(
-                  //  serverResultPhotos.user.name,
                     serverResultPhotos.user.username
                 )
 
@@ -80,7 +76,6 @@ class ExploreRemoteMediator(
 
                 UnsplashPhoto(
                     id = serverResultPhotos.id,
-                   // description= serverResultPhotos.description,
                     urls = url,
                     user = user,
                     favourite = isFavourite
@@ -120,7 +115,7 @@ class ExploreRemoteMediator(
             }
 
 
-            }
+
 
             return MediatorResult.Success(endOfPaginationReached = serverResults?.isEmpty()?: false)
 

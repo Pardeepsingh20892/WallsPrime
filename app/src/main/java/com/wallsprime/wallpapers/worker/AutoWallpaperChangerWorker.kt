@@ -83,8 +83,6 @@ class AutoWallpaperChangerWorker(
             if(category != null) {
 
 
-                    var getCategory = getDB.autoWallpaperChangerDao().getUnsplashCategoryChanger()
-
                     var getRandomNo = Random.nextInt(0, category!!.size)
                     var getId = category!![getRandomNo]
                     var getPage = Random.nextInt(1, 6)
