@@ -81,7 +81,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             recyclerviewFragmentHome.setHasFixedSize(true)
             recyclerviewFragmentHome.isVerticalScrollBarEnabled = false
             recyclerviewFragmentHome.itemAnimator?.changeDuration = 0
-            recyclerviewFragmentHome.addItemDecoration(AdapterItemDecorator(2,15,true))
+            recyclerviewFragmentHome.addItemDecoration(AdapterItemDecorator(2,10,true))
 
 
 

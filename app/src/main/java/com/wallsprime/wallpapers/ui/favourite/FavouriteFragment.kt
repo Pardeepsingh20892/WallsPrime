@@ -61,7 +61,7 @@ class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
         val layoutManager = GridLayoutManager(context,2)
             recyclerviewFragmentFavourite.layoutManager = layoutManager
             recyclerviewFragmentFavourite.setHasFixedSize(true)
-            recyclerviewFragmentFavourite.addItemDecoration(AdapterItemDecorator(2,15,true))
+            recyclerviewFragmentFavourite.addItemDecoration(AdapterItemDecorator(2,10,true))
             recyclerviewFragmentFavourite.isVerticalScrollBarEnabled = false
             recyclerviewFragmentFavourite.itemAnimator?.changeDuration = 0
 

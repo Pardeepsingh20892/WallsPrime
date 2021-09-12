@@ -14,9 +14,7 @@ const val TAB_INDEX_THREE = 2
 
 class ViewPagerAdapterMainFragment(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    /**
-     * Mapping of the ViewPager page indexes to their respective Fragments
-     */
+
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
              TAB_INDEX_ONE to { HomeFragment() },
             TAB_INDEX_TWO to { ExploreFragment() },

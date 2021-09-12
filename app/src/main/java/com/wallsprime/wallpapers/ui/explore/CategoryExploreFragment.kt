@@ -98,7 +98,7 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
          */   recyclerviewCategoryExplore.layoutManager = layoutManager
             recyclerviewCategoryExplore.setHasFixedSize(true)
-            recyclerviewCategoryExplore.addItemDecoration(AdapterItemDecorator(2,15,true))
+            recyclerviewCategoryExplore.addItemDecoration(AdapterItemDecorator(2,10,true))
             recyclerviewCategoryExplore.isVerticalScrollBarEnabled = false
             recyclerviewCategoryExplore.itemAnimator?.changeDuration = 0
 

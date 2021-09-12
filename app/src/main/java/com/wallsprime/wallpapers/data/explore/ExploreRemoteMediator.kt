@@ -40,7 +40,7 @@ class ExploreRemoteMediator(
         val page = when (loadType) {
             LoadType.REFRESH -> PHOTOS_STARTING_PAGE_INDEX
             LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-            LoadType.APPEND -> {   unsplashRemoteKeyDao.getRemoteKey(collectionId).nextPageKey }
+            LoadType.APPEND -> {   unsplashRemoteKeyDao.getRemoteKey(collectionId).nextPageKey?:1 }
 
         }
 

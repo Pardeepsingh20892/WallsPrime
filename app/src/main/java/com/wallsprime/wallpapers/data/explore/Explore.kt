@@ -9,8 +9,7 @@ import androidx.room.PrimaryKey
 data class UnsplashExplore(
     @PrimaryKey val id: String,
     val name: String,
-    val imageUrl: String,
-    val autoWallpaperChanger: Boolean
+    val imageUrl: String
     )
 
 

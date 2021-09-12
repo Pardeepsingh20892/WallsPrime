@@ -42,15 +42,16 @@ class HomeRemoteMediator(
         val page = when (loadType) {
             LoadType.REFRESH -> PHOTOS_STARTING_PAGE_INDEX
             LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-            LoadType.APPEND ->{ unsplashRemoteKeyDao.getRemoteKey(collection).nextPageKey }
+            LoadType.APPEND ->{ unsplashRemoteKeyDao.getRemoteKey(collection).nextPageKey?:1 }
 
         }
 
 
             val response = unsplashApi.getPhotos(page, state.config.pageSize)
+
             val serverResults = response.body()!!
 
-
+           // val endOfPaginationReached = serverResults.size < state.config.pageSize
 
 
 

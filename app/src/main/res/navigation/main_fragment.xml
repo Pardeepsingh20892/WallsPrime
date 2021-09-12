@@ -47,6 +47,7 @@
 
     </fragment>
 
+
     <fragment
         android:id="@+id/detailViewFragment"
         android:name="com.wallsprime.wallpapers.ui.home.DetailViewFragmentHome"
@@ -56,6 +57,7 @@
             app:argType="integer" />
     </fragment>
 
+
     <fragment
         android:id="@+id/detailViewFavouriteFragment"
         android:name="com.wallsprime.wallpapers.ui.favourite.DetailViewFavouriteFragment"
@@ -64,6 +66,8 @@
             android:name="favouriteItemPosition"
             app:argType="integer" />
     </fragment>
+
+
     <fragment
         android:id="@+id/detailViewCategoryExploreFragment"
         android:name="com.wallsprime.wallpapers.ui.explore.DetailViewCategoryExploreFragment"
@@ -73,6 +77,8 @@
             android:name="itemPositionExplore"
             app:argType="integer" />
     </fragment>
+
+
 
     <fragment
         android:id="@+id/categoryFragmentExploreFragment"
@@ -94,10 +100,16 @@
             android:name="collectionName"
             app:argType="string" />
     </fragment>
+
+
+
     <fragment
         android:id="@+id/wallpaperFragment"
         android:name="com.wallsprime.wallpapers.ui.setting.WallpaperFragment"
         android:label="Auto Wallpaper Changer" />
+
+
+
     <fragment
         android:id="@+id/settingPerference"
         android:name="com.wallsprime.wallpapers.ui.setting.SettingPerference"
@@ -110,6 +122,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
 
 
 </navigation>

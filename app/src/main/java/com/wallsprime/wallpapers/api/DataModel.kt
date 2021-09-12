@@ -4,7 +4,6 @@ package com.wallsprime.wallpapers.api
 
     data class DataModel(
         val id: String,
-        val description: String?,
         val urls: UnsplashPhotoUrls,
         val user: UnsplashUser
 )
@@ -14,11 +13,9 @@ package com.wallsprime.wallpapers.api
         val raw: String,
         val full: String,
         val regular: String,
-        val small: String,
-        val thumb: String
+        val small: String
     )
 
     data class UnsplashUser(
-        val name: String,
         val username: String
     )

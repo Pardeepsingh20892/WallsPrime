@@ -121,7 +121,7 @@ class AutoWallpaperChangerWorker(
             .into(object : CustomTarget<Bitmap>() {
 
 
-                @RequiresApi(Build.VERSION_CODES.N)
+
                 override fun onResourceReady(
                     resource: Bitmap,
                     transition: Transition<in Bitmap>?

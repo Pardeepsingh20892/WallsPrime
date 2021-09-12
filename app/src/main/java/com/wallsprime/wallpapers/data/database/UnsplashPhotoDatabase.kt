@@ -23,7 +23,7 @@ import com.wallsprime.wallpapers.worker.SeedDatabaseWorker
 
 @Database(
   entities = [UnsplashPhoto::class, RemoteKey::class, UnsplashExplore::class, ExploreCategory::class, Home::class ],
-  version = 14,exportSchema = false
+  version = 16,exportSchema = false
 )
   abstract class UnsplashPhotoDatabase : RoomDatabase() {
 

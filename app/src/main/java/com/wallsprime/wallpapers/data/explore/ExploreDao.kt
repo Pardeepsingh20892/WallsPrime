@@ -9,7 +9,7 @@ import com.wallsprime.wallpapers.data.common.UnsplashPhoto
 interface   ExploreDao {
 
 
-   // categories
+    // categories
     @Query("DELETE FROM explore_category")
     suspend fun deleteUnsplashPhotosExplore()
 

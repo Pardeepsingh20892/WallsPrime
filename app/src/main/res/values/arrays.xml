@@ -1,5 +1,7 @@
 <resources>
-    <!-- Reply Preference -->
+
+
+    <!-- theme preference -->
     <string-array name="theme_entries">
         <item>Default</item>
         <item>Light Mode</item>
@@ -12,6 +14,10 @@
         <item>dark_mode</item>
     </string-array>
 
+
+
+
+    <!-- layout preference -->
     <string-array name="layout_entries">
         <item>Large Grid</item>
         <item>Small Grid</item>
@@ -24,6 +30,10 @@
     </string-array>
 
 
+
+
+
+    <!-- wallpaper quality -->
     <string-array name="quality_entries">
         <item>4K</item>
         <item>HD</item>
