@@ -1,5 +1,8 @@
 package com.wallsprime.wallpapers.data.explore
 
+import android.app.Application
+import android.content.Context
+import android.widget.Toast
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
@@ -10,6 +13,7 @@ import com.wallsprime.wallpapers.data.database.*
 import com.wallsprime.wallpapers.data.common.UnsplashPhoto
 import com.wallsprime.wallpapers.data.common.UnsplashPhotoUrls
 import com.wallsprime.wallpapers.data.common.UnsplashUser
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 import java.io.IOException
@@ -49,72 +53,73 @@ class ExploreRemoteMediator(
 
 
             val response = unsplashApi.getCollectionPhotos(collectionId,page, state.config.pageSize)
-            val serverResults = response.body()!!
+            val serverResults = response.body()?: listOf()
+
+
+            if (serverResults.isNotEmpty()) {
+
+                val favouritePhotos = favouriteDao.getUnsplashFavouritePhotos().first()
+                val collectionImages = serverResults.map { serverResultPhotos ->
+
+                    val isFavourite = favouritePhotos.any { favouritePhotos ->
+                        favouritePhotos.id == serverResultPhotos.id
+                    }
+
+
+                    val url = UnsplashPhotoUrls(
+                        serverResultPhotos.urls.raw,
+                        serverResultPhotos.urls.full,
+                        serverResultPhotos.urls.regular,
+                        serverResultPhotos.urls.small
+                    )
+
+
+                    val user = UnsplashUser(
+                        serverResultPhotos.user.username
+                    )
 
 
 
-            val favouritePhotos = favouriteDao.getUnsplashFavouritePhotos().first()
-            val collectionImages = serverResults.map { serverResultPhotos ->
+                    UnsplashPhoto(
+                        id = serverResultPhotos.id,
+                        urls = url,
+                        user = user,
+                        favourite = isFavourite
 
-                val isFavourite = favouritePhotos.any { favouritePhotos ->
-                    favouritePhotos.id == serverResultPhotos.id
+                    )
                 }
 
 
-                val url = UnsplashPhotoUrls(serverResultPhotos.urls.raw,
-                    serverResultPhotos.urls.full,
-                    serverResultPhotos.urls.regular,
-                    serverResultPhotos.urls.small
-                )
+                val exploreCategory = serverResults.map { serverResultPhotos ->
 
+                    ExploreCategory(
+                        PhotoId = serverResultPhotos.id,
+                        collectionId = collectionId
 
-                val user = UnsplashUser(
-                    serverResultPhotos.user.username
-                )
-
-
-
-                UnsplashPhoto(
-                    id = serverResultPhotos.id,
-                    urls = url,
-                    user = user,
-                    favourite = isFavourite
-
-                )
-            }
-
-
-
-            val exploreCategory = serverResults.map { serverResultPhotos ->
-
-                ExploreCategory(
-                    PhotoId =  serverResultPhotos.id,
-                    collectionId = collectionId
-
-                )
-
-            }
-
-            val nextPageKey = page + 1
-
-
-            unsplashPhotoDb.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    unsplashRemoteKeyDao.deleteRemoteKey(collectionId)
-                    exploreDao.deleteUnsplashPhotosExplore()
+                    )
 
                 }
 
+                val nextPageKey = page + 1
 
-                exploreDao.insertUnsplashCategoryPhotos(exploreCategory)
-                photoDao.insertUnsplashPhotos(collectionImages)
-                unsplashRemoteKeyDao.insertRemoteKey(
-                    RemoteKey(collectionId, nextPageKey)
-                )
+
+                unsplashPhotoDb.withTransaction {
+                    if (loadType == LoadType.REFRESH) {
+                        unsplashRemoteKeyDao.deleteRemoteKey(collectionId)
+                        exploreDao.deleteUnsplashPhotosExplore()
+
+                    }
+
+
+                    exploreDao.insertUnsplashCategoryPhotos(exploreCategory)
+                    photoDao.insertUnsplashPhotos(collectionImages)
+                    unsplashRemoteKeyDao.insertRemoteKey(
+                        RemoteKey(collectionId, nextPageKey)
+                    )
+
+                }
 
             }
-
-
 
 
             return MediatorResult.Success(endOfPaginationReached = serverResults?.isEmpty()?: false)

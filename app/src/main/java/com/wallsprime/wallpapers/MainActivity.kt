@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sp: SharedPreferences
-  //  private lateinit var cm: ConnectivityManager
-  //  private lateinit var networkStateChecker: NetworkStateChecker
+    private lateinit var cm: ConnectivityManager
+    private lateinit var networkStateChecker: NetworkStateChecker
 
 
 
@@ -54,9 +54,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
 
 
-/*
-
-
         networkStateChecker = NetworkStateChecker()
         cm = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkChangeFilter: NetworkRequest = NetworkRequest.Builder()
@@ -67,7 +64,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
 
 
-*/
 
 
 
@@ -101,7 +97,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         super.onDestroy()
 
         sp.unregisterOnSharedPreferenceChangeListener(this)
-//        cm.unregisterNetworkCallback(networkStateChecker)
+        cm.unregisterNetworkCallback(networkStateChecker)
     }
 
 

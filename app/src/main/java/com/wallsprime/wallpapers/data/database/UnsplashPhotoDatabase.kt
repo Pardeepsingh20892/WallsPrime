@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.wallsprime.wallpapers.data.auto_wallpaper_changer.AutoWallpaperChangerDao
 import com.wallsprime.wallpapers.data.common.PhotoDao
 import com.wallsprime.wallpapers.data.common.RemoteKey
 import com.wallsprime.wallpapers.data.common.RemoteKeyDao
@@ -33,7 +32,6 @@ import com.wallsprime.wallpapers.worker.SeedDatabaseWorker
   abstract fun exploreDao(): ExploreDao
   abstract fun favouriteDao(): FavouriteDao
   abstract fun remoteKeyDao(): RemoteKeyDao
-  abstract fun autoWallpaperChangerDao(): AutoWallpaperChangerDao
 
 
 

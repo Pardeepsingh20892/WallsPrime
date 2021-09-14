@@ -49,70 +49,70 @@ class HomeRemoteMediator(
 
             val response = unsplashApi.getPhotos(page, state.config.pageSize)
 
-            val serverResults = response.body()!!
+            val serverResults = response.body()?: listOf()
 
            // val endOfPaginationReached = serverResults.size < state.config.pageSize
 
+           if (serverResults.isNotEmpty()) {
+
+               val favouritePhotos = favouriteDao.getUnsplashFavouritePhotos().first()
+               val collectionImages = serverResults.map { serverResultPhotos ->
+               val isFavourite = favouritePhotos.any { favouritePhotos ->
+                       favouritePhotos.id == serverResultPhotos.id
+                   }
+
+               val url = UnsplashPhotoUrls(
+                       serverResultPhotos.urls.raw,
+                       serverResultPhotos.urls.full,
+                       serverResultPhotos.urls.regular,
+                       serverResultPhotos.urls.small
+
+                   )
 
 
-            val favouritePhotos = favouriteDao.getUnsplashFavouritePhotos().first()
-            val collectionImages = serverResults.map { serverResultPhotos ->
-                val isFavourite = favouritePhotos.any { favouritePhotos ->
-                    favouritePhotos.id == serverResultPhotos.id
-                }
-
-                    val url = UnsplashPhotoUrls(
-                        serverResultPhotos.urls.raw,
-                        serverResultPhotos.urls.full,
-                        serverResultPhotos.urls.regular,
-                        serverResultPhotos.urls.small
-
-                    )
-
-
-                    val user = UnsplashUser(
-                        serverResultPhotos.user.username
-                    )
+               val user = UnsplashUser(
+                       serverResultPhotos.user.username
+                   )
 
 
 
-                    UnsplashPhoto(
-                        id = serverResultPhotos.id,
-                        urls = url,
-                        user = user,
-                        favourite = isFavourite
+                   UnsplashPhoto(
+                       id = serverResultPhotos.id,
+                       urls = url,
+                       user = user,
+                       favourite = isFavourite
 
-                    )
-                }
-
-
-            val home = serverResults.map { serverResultPhotos ->
-                Home(
-                    homeId =  serverResultPhotos.id
-                )
-            }
+                   )
+               }
 
 
-            val nextPageKey = page + 1
-
-            unsplashPhotoDb.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    unsplashRemoteKeyDao.deleteRemoteKey(collection)
-                    homeDao.deleteUnsplashPhotosHome()
-
-
-                }
+               val home = serverResults.map { serverResultPhotos ->
+                   Home(
+                       homeId = serverResultPhotos.id
+                   )
+               }
 
 
-                homeDao.insertUnsplashPhotosHome(home)
-                photoDao.insertUnsplashPhotos(collectionImages)
-                unsplashRemoteKeyDao.insertRemoteKey(
-                    RemoteKey(collection, nextPageKey)
-                )
+               val nextPageKey = page + 1
 
-            }
+               unsplashPhotoDb.withTransaction {
+                   if (loadType == LoadType.REFRESH) {
+                       unsplashRemoteKeyDao.deleteRemoteKey(collection)
+                       homeDao.deleteUnsplashPhotosHome()
 
 
+                   }
+
+
+                   homeDao.insertUnsplashPhotosHome(home)
+                   photoDao.insertUnsplashPhotos(collectionImages)
+                   unsplashRemoteKeyDao.insertRemoteKey(
+                       RemoteKey(collection, nextPageKey)
+                   )
+
+               }
+
+           }
 
 
 

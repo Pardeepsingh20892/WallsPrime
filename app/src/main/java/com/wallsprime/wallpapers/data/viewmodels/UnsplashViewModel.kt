@@ -3,7 +3,6 @@ package com.wallsprime.wallpapers.data.viewmodels
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.wallsprime.wallpapers.data.auto_wallpaper_changer.AutoWallpaperChangerRepository
 import com.wallsprime.wallpapers.data.common.PhotoRepository
 import com.wallsprime.wallpapers.data.explore.ExploreRepository
 import com.wallsprime.wallpapers.data.common.UnsplashPhoto
@@ -21,8 +20,7 @@ class UnsplashViewModel@Inject constructor(
     private val photoRepository: PhotoRepository,
     private val homeRepository: HomeRepository,
     private val exploreRepository: ExploreRepository,
-    private val favouriteRepository: FavouriteRepository,
-    private val autoWallpaperChangerRepository: AutoWallpaperChangerRepository
+    private val favouriteRepository: FavouriteRepository
 ) : ViewModel() {
 
 
