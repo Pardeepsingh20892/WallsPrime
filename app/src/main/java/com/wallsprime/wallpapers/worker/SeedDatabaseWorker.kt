@@ -33,7 +33,7 @@ class SeedDatabaseWorker(
 ) : CoroutineWorker(context, workerParams) {
     override suspend fun doWork(): Result = coroutineScope {
         try {
-            applicationContext.assets.open("catergories_data.json").use { inputStream ->
+            applicationContext.assets.open("categories_data.json").use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
                     val plantType = object : TypeToken<List<UnsplashExplore>>() {}.type
                     val plantList: List<UnsplashExplore> = Gson().fromJson(jsonReader, plantType)
