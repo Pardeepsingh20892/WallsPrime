@@ -17,12 +17,10 @@ class AdapterItemDecorator( var spanCount:Int, var spacing:Int, var includeEdge:
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        val position: Int = parent.getChildAdapterPosition(view) // item position
-       // val column: Int = position % spanCount // item column
+        val position: Int = parent.getChildAdapterPosition(view)
+
 
         if (spanCount == 2) {
-           // outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-           // outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
 
             if (position % 2 == 0)   {
                 outRect.right = 0
@@ -35,13 +33,14 @@ class AdapterItemDecorator( var spanCount:Int, var spacing:Int, var includeEdge:
 
             }
 
-            if (position < spanCount) { // top edge
+            if (position < spanCount) {
                 outRect.top = spacing
             }
-           // outRect.bottom = 0// item bottom
+
         }
+
         else {
-            if (position < spanCount) { // top edge
+            if (position < spanCount) {
                 outRect.top = spacing
             }
             outRect.bottom = spacing

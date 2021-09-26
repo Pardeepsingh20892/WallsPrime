@@ -6,34 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewSingleItemFullScreen"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="#00100F0F"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <ImageView
             android:id="@+id/imageViewSingleItemFullScreen"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-    </androidx.cardview.widget.CardView>
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="70dp"
         android:background="#00CDC0C0"
         android:weightSum="4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,12 +42,12 @@
             app:backgroundTint="@color/transparent_color"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:tint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/setHome"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:pressedTranslationZ="1dp" />
+            app:pressedTranslationZ="1dp"
+            app:tint="@null" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/setHome"
@@ -64,13 +57,13 @@
             android:src="@drawable/outline_format_paint_24"
             app:backgroundTint="@color/transparent_color"
             app:elevation="0dp"
-            app:tint="@null"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/downloadHome"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/shareHome"
-            app:pressedTranslationZ="1dp" />
+            app:pressedTranslationZ="1dp"
+            app:tint="@null" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/downloadHome"
@@ -81,12 +74,12 @@
             app:backgroundTint="@color/transparent_color"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:tint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/favhome"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/setHome"
-            app:pressedTranslationZ="1dp" />
+            app:pressedTranslationZ="1dp"
+            app:tint="@null" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/favhome"
@@ -97,12 +90,12 @@
             app:backgroundTint="@color/transparent_color"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:tint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/downloadHome"
-            app:pressedTranslationZ="1dp" />
+            app:pressedTranslationZ="1dp"
+            app:tint="@null" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

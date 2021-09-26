@@ -40,13 +40,18 @@ class FavouriteDetailViewAdapter(
                 else  -> item?.urls?.full!!
             }
 
+
+
+
+            var thumbnailUrl = item?.urls?.small!!
+
             binding.apply {
 
 
                 Glide.with(itemView.context)
                     .load(url)
                     .centerCrop()
-                    .placeholder(R.drawable.ic_load_full)
+                    .thumbnail(Glide.with(itemView.context).load(thumbnailUrl))
                     .into(imageViewSingleItemFullScreen)
 
 

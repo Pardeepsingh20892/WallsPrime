@@ -3,11 +3,8 @@ package com.wallsprime.wallpapers.adapters.home
 
 
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -93,21 +90,6 @@ class HomeAdapter(
         viewHolder.bind(position,item)
 
     }
-
-
-/*
-
-
-
-    override fun getItemViewType(position: Int): Int {
-        super.getItemViewType(position)
-        return if (position == itemCount) PHOTO_ITEM else LOADING_ITEM
-    }
-
-
-
-*/
-
 
 
 

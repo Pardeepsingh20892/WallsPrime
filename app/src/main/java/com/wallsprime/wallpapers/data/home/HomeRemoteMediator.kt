@@ -6,11 +6,11 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.wallsprime.wallpapers.api.Api
+import com.wallsprime.wallpapers.data.common.RemoteKey
 import com.wallsprime.wallpapers.data.common.UnsplashPhoto
 import com.wallsprime.wallpapers.data.common.UnsplashPhotoUrls
-import com.wallsprime.wallpapers.data.common.RemoteKey
 import com.wallsprime.wallpapers.data.common.UnsplashUser
-import com.wallsprime.wallpapers.data.database.*
+import com.wallsprime.wallpapers.data.database.UnsplashPhotoDatabase
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 import java.io.IOException
@@ -51,7 +51,6 @@ class HomeRemoteMediator(
 
             val serverResults = response.body()?: listOf()
 
-           // val endOfPaginationReached = serverResults.size < state.config.pageSize
 
            if (serverResults.isNotEmpty()) {
 
@@ -126,8 +125,9 @@ class HomeRemoteMediator(
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
             return MediatorResult.Error(exception)
+        } catch (exception: Exception) {
+            return MediatorResult.Error(exception)
         }
-
 
     }
 

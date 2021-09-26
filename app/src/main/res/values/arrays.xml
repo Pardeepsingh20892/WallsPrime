@@ -17,20 +17,6 @@
 
 
 
-    <!-- layout preference -->
-    <string-array name="layout_entries">
-        <item>Large Grid</item>
-        <item>Small Grid</item>
-
-    </string-array>
-
-    <string-array name="layout_values">
-        <item>large</item>
-        <item>small</item>
-    </string-array>
-
-
-
 
 
     <!-- wallpaper quality -->

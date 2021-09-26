@@ -27,12 +27,7 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
     private val mainBinding get() = _mainBinding!!
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,13 +50,6 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
 
            val navController = findNavController()
 
-
-           // set up toolbar
-          // val appBarConfiguration = AppBarConfiguration(setOf(
-          //     R.id.mainFragment
-          // ))
-
-          // toolbarFragmentMain.setupWithNavController( navController, appBarConfiguration)
 
            toolbarFragmentMain.setOnMenuItemClickListener {
 

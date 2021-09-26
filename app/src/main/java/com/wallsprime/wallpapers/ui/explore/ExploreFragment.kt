@@ -23,10 +23,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
     private val exploreBinding get() = _exploreBinding!!
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

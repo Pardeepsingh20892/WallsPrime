@@ -1,10 +1,9 @@
 package com.wallsprime.wallpapers.ui.explore
 
-import android.content.res.Resources
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -33,26 +32,11 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
     private val exploreBinding get() = _exploreBinding!!
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _exploreBinding = FragmentCategoryExploreBinding.bind(view)
-
-/*
-
-        val exploreCategoryId = arguments?.let {
-            CategoryFragmentExploreFragmentArgs.fromBundle(it).collectionId
-        }
-        viewModelCategoryExploreFragment.currentCollectionId = exploreCategoryId
-        viewModelCategoryExploreFragment.setExploreResult()
-
-*/
 
 
         val exploreCategoryRecyclerViewAdapter = CategoryAdapter(
@@ -82,21 +66,9 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
 
 
-
-       //     val width = Resources.getSystem().getDisplayMetrics().widthPixels
-        //    val span: Int = width/500
-
         // setup RecyclerView
         val layoutManager = GridLayoutManager(context, 2)
-/*
-            layoutManager.spanSizeLookup = object  : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    val viewType = exploreCategoryRecyclerViewAdapter.getItemViewType(position)
-                    return if (viewType == exploreCategoryRecyclerViewAdapter.LOADING_ITEM) 1 else 2
-                }
-            }
-
-         */   recyclerviewCategoryExplore.layoutManager = layoutManager
+            recyclerviewCategoryExplore.layoutManager = layoutManager
             recyclerviewCategoryExplore.setHasFixedSize(true)
             recyclerviewCategoryExplore.addItemDecoration(AdapterItemDecorator(2,10,true))
             recyclerviewCategoryExplore.isVerticalScrollBarEnabled = false
@@ -113,11 +85,6 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
             recyclerviewCategoryExplore.adapter = exploreCategoryRecyclerViewAdapter
 
-             //   .withLoadStateFooter(
-              //       footer = LoadStateAdapter(exploreCategoryRecyclerViewAdapter::retry))
-
-        //  exploreCategoryRecyclerViewAdapter.stateRestorationPolicy =
-        //     RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
 
             SwipeRefreshLayoutExplore.setOnRefreshListener {

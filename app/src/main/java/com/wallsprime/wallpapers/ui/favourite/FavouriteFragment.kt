@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.collectLatest
 class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
 
 
-  //  private lateinit var navController: NavController
+
 
     private val viewModelFavouriteFragment: UnsplashViewModel by activityViewModels()
     private var _favouriteBinding: FragmentFavouriteBinding? = null
@@ -31,10 +31,7 @@ class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

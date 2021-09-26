@@ -10,13 +10,26 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.wallsprime.wallpapers.databinding.ActivityMainBinding
 import com.wallsprime.wallpapers.utils.NetworkStateChecker
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -25,8 +38,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sp: SharedPreferences
-    private lateinit var cm: ConnectivityManager
-    private lateinit var networkStateChecker: NetworkStateChecker
+
 
 
 
@@ -52,19 +64,30 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
 
 
+/*
 
 
-        networkStateChecker = NetworkStateChecker()
-        cm = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkChangeFilter: NetworkRequest = NetworkRequest.Builder()
-            .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-            .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-            .build()
-        cm.registerNetworkCallback(networkChangeFilter,networkStateChecker )
+        val networkStateChecker= NetworkStateChecker(applicationContext)
+
+
+        networkStateChecker.observe(this, { isConnected ->
+
+            if (isConnected){
+                Log.i("ABC", "connected ")
+
+            }
+            else{
+
+                Log.i("ABC", "not connected ")
+
+            }
+
+
+        })
 
 
 
-
+*/
 
 
 
@@ -76,6 +99,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
 
         if(key == "theme"){
+
         val theme = when(sp.getString("theme","")){
 
             "default" -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
@@ -83,6 +107,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             "dark_mode" ->  AppCompatDelegate.MODE_NIGHT_YES
             else  -> AppCompatDelegate.MODE_NIGHT_NO
         }
+
         AppCompatDelegate.setDefaultNightMode(theme)
 
 
@@ -95,11 +120,9 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onDestroy() {
         super.onDestroy()
-
         sp.unregisterOnSharedPreferenceChangeListener(this)
-        cm.unregisterNetworkCallback(networkStateChecker)
-    }
 
+    }
 
 
 
@@ -109,17 +132,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
 
 
-
-  // val cm = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-  //  val capabilities = cm.getNetworkCapabilities(cm.activeNetwork)
-  //  val connected = capabilities?.hasCapability(NET_CAPABILITY_INTERNET) == true
-    // could filter using .addCapability(int) or .addTransportType(int) on Builder
-    //builder.addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-
-
-  //  val networkChangeFilter: NetworkRequest = NetworkRequest.Builder().build()
-
-    //     val xxx =    cm.registerNetworkCallback(networkChangeFilter,NetworkStateChecker())
 
 
 

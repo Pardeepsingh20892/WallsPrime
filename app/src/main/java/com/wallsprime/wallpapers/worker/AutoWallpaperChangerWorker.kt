@@ -19,12 +19,6 @@ import com.wallsprime.wallpapers.di.AppModule.provideUnsplashApi
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
-/*
-@HiltWorker
-@AssistedInject
-@Assisted
-*/
-
 
 class AutoWallpaperChangerWorker(
       context: Context,

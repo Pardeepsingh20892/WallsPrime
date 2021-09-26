@@ -19,8 +19,6 @@ class ExploreAdapter(
 
 
     class ExploreViewHolder(private val binding: SingleItemExploreFragmentBinding, private val categoryData:List<UnsplashExplore>): RecyclerView.ViewHolder(binding.root) {
-      //  private val exploreImage: ImageView =view.findViewById(R.id.imageViewSingleItemCollectionFragment)
-      //  private val exploreText: TextView =view.findViewById(R.id.textViewSingleItemCollectionFragment)
 
 
         fun bind( position: Int, getPositionId: (positionId:String)-> Unit) {

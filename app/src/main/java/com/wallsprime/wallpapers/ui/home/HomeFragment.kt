@@ -1,6 +1,7 @@
 package com.wallsprime.wallpapers.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -22,8 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-   // private val viewModelHomeFragment: UnsplashViewModel by viewModels()
-   // private val viewModelHomeFragment: UnsplashViewModel by navGraphViewModels(R.id.home)
+
     private val viewModelHomeFragment: UnsplashViewModel by activityViewModels()
     private var _homeBinding: FragmentHomeBinding? = null
     private val homeBinding get() = _homeBinding!!
@@ -51,32 +51,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         homeBinding.apply {
 
 
-
-
-
-
-        //   val width = Resources.getSystem().getDisplayMetrics().widthPixels
-          // val span: Int = width/300
-
-
-          //  val dp = width/Resources.getSystem().getDisplayMetrics().density.toInt()
-
-         //   val span: Int = dp/180
-        //    Log.i("width", dp.toString())
-
-
             // setup RecyclerView
             val layoutManager = GridLayoutManager(context,2)
 
-         /*
-           layoutManager.spanSizeLookup = object  : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    val viewType = unsplashPhotoPagingAdapter.getItemViewType(position)
-                    return if (viewType == unsplashPhotoPagingAdapter.LOADING_ITEM) 1 else 2
-                }
-            }
-
-*/
             recyclerviewFragmentHome.layoutManager = layoutManager
             recyclerviewFragmentHome.setHasFixedSize(true)
             recyclerviewFragmentHome.isVerticalScrollBarEnabled = false
@@ -92,9 +69,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             })
 
             recyclerviewFragmentHome.adapter =   unsplashPhotoPagingAdapter
-
-
-
 
 
 
@@ -168,7 +142,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
 
-
             if (viewModelHomeFragment.homeCurrentPosition != null) {
                 viewModelHomeFragment.homeCurrentPosition?.let { recyclerviewFragmentHome.scrollToPosition(it) }
                 viewModelHomeFragment.homeCurrentPosition = null
@@ -176,6 +149,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         }
+
 
 
     }
@@ -187,30 +161,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         _homeBinding = null
 
     }
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-    }
-
-*/
-
-
-
-
 
 
 

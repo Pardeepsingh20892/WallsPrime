@@ -8,7 +8,7 @@ import dagger.hilt.android.HiltAndroidApp
 class UnsplashApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-       // AppInitializer.getInstance(this).initializeComponent(CustomWorkManager::class.java)
+
     }
 
 

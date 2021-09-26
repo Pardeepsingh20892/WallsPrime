@@ -53,23 +53,14 @@ class UnsplashViewModel@Inject constructor(
         val updatedPhoto = photo.copy(favourite = !currentlyFavourite)
         viewModelScope.launch {
             photoRepository.updateUnsplashPhoto(updatedPhoto)
-           // photoRepository.download(photo.id)
+
         }
     }
 
 
 
-
     suspend fun download(id: String) = photoRepository.download(id)
 
-
-
-    private val _downloading: MutableLiveData<Boolean> = MutableLiveData()
-    val downloading: LiveData<Boolean> = _downloading
-
-    fun setDownloading(downloading: Boolean) {
-        _downloading.value = downloading
-    }
 
 
 

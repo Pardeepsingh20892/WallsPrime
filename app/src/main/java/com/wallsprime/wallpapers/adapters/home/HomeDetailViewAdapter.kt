@@ -55,14 +55,14 @@ class HomeDetailViewAdapter(
 
 
 
-
+            var thumbnailUrl = item?.urls?.small!!
 
             binding.apply {
 
                 Glide.with(itemView.context)
                     .load(url)
+                    .thumbnail(Glide.with(itemView.context).load(thumbnailUrl))
                     .centerCrop()
-                    .placeholder(R.drawable.ic_load_full)
                     .into(imageViewSingleItemFullScreen)
 
 

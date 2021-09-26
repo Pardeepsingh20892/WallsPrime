@@ -1,19 +1,15 @@
 package com.wallsprime.wallpapers.data.explore
 
-import android.app.Application
-import android.content.Context
-import android.widget.Toast
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.wallsprime.wallpapers.api.Api
 import com.wallsprime.wallpapers.data.common.RemoteKey
-import com.wallsprime.wallpapers.data.database.*
 import com.wallsprime.wallpapers.data.common.UnsplashPhoto
 import com.wallsprime.wallpapers.data.common.UnsplashPhotoUrls
 import com.wallsprime.wallpapers.data.common.UnsplashUser
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.wallsprime.wallpapers.data.database.UnsplashPhotoDatabase
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 import java.io.IOException
@@ -128,6 +124,8 @@ class ExploreRemoteMediator(
         } catch (exception: IOException) {
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
+            return MediatorResult.Error(exception)
+        } catch (exception: Exception) {
             return MediatorResult.Error(exception)
         }
 

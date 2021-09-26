@@ -14,10 +14,7 @@ class PhotoRepository @Inject constructor(
 
     private val photoDao = unsplashPhotoDb.photoDao()
 
-
-
     suspend fun updateUnsplashPhoto(photos: UnsplashPhoto) = photoDao.updateUnsplashPhotos(photos)
-
     suspend fun download(id: String) = unsplashApi.download(id)
 
 

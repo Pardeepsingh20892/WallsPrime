@@ -18,8 +18,6 @@ class CategoryAdapter (
 ) : PagingDataAdapter<UnsplashPhoto, CategoryAdapter.ViewHolder>(CategoryComparator()) {
 
 
-    val LOADING_ITEM = 0
-    val PHOTO_ITEM = 1
 
     class ViewHolder(private val binding: SingleItemImageBinding, private val onFavouriteClick: (Int) -> Unit) : RecyclerView.ViewHolder(binding.root) {
 
@@ -93,14 +91,5 @@ class CategoryAdapter (
 
     }
 
-  /*
-
-    override fun getItemViewType(position: Int): Int {
-        super.getItemViewType(position)
-        return if (position == itemCount) PHOTO_ITEM else LOADING_ITEM
-    }
-
-
-*/
 
 }

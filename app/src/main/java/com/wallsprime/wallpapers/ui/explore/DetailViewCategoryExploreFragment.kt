@@ -14,6 +14,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -56,27 +59,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
     private var itemCode: Int? = null
     private var userProfile: String? = null
     private lateinit var job : Job
-
-
-
-    override fun onResume() {
-        super.onResume()
-        /*
-
-       requireActivity().window.decorView.windowInsetsController!!.hide(
-           WindowInsets.Type.statusBars()
-       )
-       */
-
-        requireActivity().window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-
-    }
-
-
-
 
 
 
@@ -218,18 +200,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        navController.removeOnDestinationChangedListener(listener)
-        _exploreBinding = null
-        requireActivity().window?.decorView?.systemUiVisibility = 0
-
-
-    }
-
-
-
 
 
 
@@ -313,7 +283,7 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
         val ktor = HttpClient(Android)
 
-        // viewModelDetailViewFragment.setDownloading(true)
+
         job = lifecycleScope.launch(Dispatchers.IO) {
         context.contentResolver.openOutputStream(file)?.let { outputStream ->
                 ktor.downloadFile(outputStream, url).collect {
@@ -321,7 +291,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
                     withContext(Dispatchers.Main) {
                         when (it) {
                             is DownloadResult.Success -> {
-                                // viewModelDetailViewFragment.setDownloading(false)
                                 exploreBinding .downloading.isVisible = false
                                 exploreBinding.progressBar.progress = 0
                                 exploreBinding.textViewProgress.text = "0%"
@@ -345,7 +314,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
                             }
 
                             is DownloadResult.Error -> {
-                                // viewModelDetailViewFragment.setDownloading(false)
                                 exploreBinding .downloading.isVisible = false
                                 exploreBinding.progressBar.progress = 0
                                 exploreBinding.textViewProgress.text = "0%"
@@ -381,11 +349,47 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
 
 
+    override fun onResume() {
+        super.onResume()
+        hideSystemUI()
+    }
+
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        navController.removeOnDestinationChangedListener(listener)
+        showSystemUI()
+        _exploreBinding = null
+
+
+
+    }
 
 
 
 
 
+
+
+
+
+    private fun hideSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
+        WindowInsetsControllerCompat(requireActivity().window, exploreBinding.root).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.statusBars())
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
+    private fun showSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
+        WindowInsetsControllerCompat(requireActivity().window, exploreBinding.root).show(
+            WindowInsetsCompat.Type.statusBars())
+    }
 
 
 
