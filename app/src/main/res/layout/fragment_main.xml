@@ -22,7 +22,7 @@
             app:contentInsetStartWithNavigation="16dp"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:menu="@menu/menu_toolbar_main" />
+            app:menu="@menu/menu_main_fragment" />
 
 
         <com.google.android.material.tabs.TabLayout

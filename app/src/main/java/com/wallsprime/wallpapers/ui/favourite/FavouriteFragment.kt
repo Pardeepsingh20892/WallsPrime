@@ -31,9 +31,6 @@ class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
 
 
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _favouriteBinding = FragmentFavouriteBinding.bind(view)
@@ -51,18 +48,20 @@ class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
         favouriteBinding.apply {
 
 
-            val width = Resources.getSystem().getDisplayMetrics().widthPixels
-            val span: Int = width/500
+          //  val width = Resources.getSystem().getDisplayMetrics().widthPixels
+          //  val span: Int = width/500
+
 
         // setup RecyclerView
-        val layoutManager = GridLayoutManager(context,2)
-            recyclerviewFragmentFavourite.layoutManager = layoutManager
-            recyclerviewFragmentFavourite.setHasFixedSize(true)
-            recyclerviewFragmentFavourite.addItemDecoration(AdapterItemDecorator(2,10,true))
-            recyclerviewFragmentFavourite.isVerticalScrollBarEnabled = false
-            recyclerviewFragmentFavourite.itemAnimator?.changeDuration = 0
 
+            recyclerviewFragmentFavourite.apply {
+                layoutManager = GridLayoutManager(context,2)
+                setHasFixedSize(true)
+                isVerticalScrollBarEnabled = false
+                itemAnimator?.changeDuration = 0
+                addItemDecoration(AdapterItemDecorator(2,10,true))
 
+            }
 
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/Pardeep/.gradle/caches/transforms-3/313d969d78d86401fe17c173d804836d/transformed/material-1.4.0/res/drawable/material_ic_keyboard_arrow_right_black_24dp.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13425925925925927" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/circle.xml" value="0.13148148148148148" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/custom_ripple_effect.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.175" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24_explore.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/ic_baseline_arrow_downward_24.xml" value="0.13425925925925927" />
@@ -36,11 +38,18 @@
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/outline_wallpaper_24.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/outline_wallpaper_24_setting.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/drawable/tab_indicator.xml" value="0.13425925925925927" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/custom_setting_preference_layout.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/fragment_detail_view_explore.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/fragment_detail_view_favourite.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/fragment_detail_view_home.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/fragment_explore.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/fragment_main.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/single_item_image.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/layout/single_item_image_full_screen.xml" value="0.21125541125541125" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/menu/menu_toolbar_main.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1527777777777778" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/xml/root_preferences.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/Pardeep/AndroidStudioProjects/WallsPrime/app/src/main/res/xml/wallpaper_preferences.xml" value="0.21403508771929824" />
       </map>
     </option>
   </component>

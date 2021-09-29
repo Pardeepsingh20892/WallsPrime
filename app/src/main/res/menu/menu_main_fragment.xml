@@ -12,11 +12,25 @@
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Setting"
         app:showAsAction="always" />
+
+
     <item
-        android:id="@+id/menuDialogFragment"
-        android:icon="@drawable/ic_baseline_more_vert_24"
-        android:title="Setting"
-        app:showAsAction="always" />
+        android:id="@+id/about"
+        android:title="About"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rate"
+        android:title="Rate"
+        app:showAsAction="never" />
 
 
+    <item
+        android:id="@+id/disclaimer"
+        android:title="Disclaimer"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/privacy"
+        android:title="Privacy Policy"
+        app:showAsAction="never" />
 </menu>

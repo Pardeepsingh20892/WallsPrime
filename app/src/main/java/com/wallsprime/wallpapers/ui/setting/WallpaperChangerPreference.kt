@@ -14,12 +14,11 @@ import com.wallsprime.wallpapers.R
 import com.wallsprime.wallpapers.worker.AutoWallpaperChangerWorker
 import java.util.concurrent.TimeUnit
 
-class WallpaperFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
+class WallpaperChangerPreference : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
 
 
     private lateinit var navController: NavController
-    private lateinit var listener : NavController.OnDestinationChangedListener
     private lateinit var sp: SharedPreferences
     private lateinit var autoWallpaperChanger: SwitchPreferenceCompat
     private lateinit var random: SwitchPreferenceCompat
@@ -31,7 +30,7 @@ class WallpaperFragment : PreferenceFragmentCompat(), SharedPreferences.OnShared
 
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.wallpaper_preferences, rootKey)
+        setPreferencesFromResource(R.xml.wallpaper_changer_preferences, rootKey)
 
 
          workManager= WorkManager.getInstance(requireContext())
@@ -68,18 +67,6 @@ class WallpaperFragment : PreferenceFragmentCompat(), SharedPreferences.OnShared
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
 
-        listener = NavController.OnDestinationChangedListener { _, destination, _ ->
-
-            if (destination.id == R.id.wallpaperFragment) {
-
-                toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24_explore)
-
-            }
-
-        }
-        navController.addOnDestinationChangedListener(listener)
-
-
         sp.registerOnSharedPreferenceChangeListener(this)
 
 
@@ -92,7 +79,6 @@ class WallpaperFragment : PreferenceFragmentCompat(), SharedPreferences.OnShared
 
     override fun onDestroyView() {
         super.onDestroyView()
-        navController.removeOnDestinationChangedListener(listener)
         sp.unregisterOnSharedPreferenceChangeListener(this)
 
     }

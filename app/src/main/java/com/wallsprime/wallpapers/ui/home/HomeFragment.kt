@@ -43,8 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModelHomeFragment.onFavouriteClick(photoItem)
         })
 
-        unsplashPhotoPagingAdapter.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        unsplashPhotoPagingAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
 
 
@@ -52,14 +51,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
             // setup RecyclerView
-            val layoutManager = GridLayoutManager(context,2)
+            recyclerviewFragmentHome.apply {
+            layoutManager = GridLayoutManager(context,2)
+            setHasFixedSize(true)
+            isVerticalScrollBarEnabled = false
+            itemAnimator?.changeDuration = 0
+            addItemDecoration(AdapterItemDecorator(2,10,true))
 
-            recyclerviewFragmentHome.layoutManager = layoutManager
-            recyclerviewFragmentHome.setHasFixedSize(true)
-            recyclerviewFragmentHome.isVerticalScrollBarEnabled = false
-            recyclerviewFragmentHome.itemAnimator?.changeDuration = 0
-            recyclerviewFragmentHome.addItemDecoration(AdapterItemDecorator(2,10,true))
-
+            }
 
 
             viewModelHomeFragment.homeResults.observe(viewLifecycleOwner,{

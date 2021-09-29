@@ -20,7 +20,7 @@ import com.wallsprime.wallpapers.adapters.common.ViewPagerAdapterMainFragment
 import com.wallsprime.wallpapers.databinding.FragmentMainBinding
 
 
-class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickListener {
+class MainFragment : Fragment(R.layout.fragment_main) {
 
 
     private var _mainBinding: FragmentMainBinding? = null
@@ -50,7 +50,6 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
 
            val navController = findNavController()
 
-
            toolbarFragmentMain.setOnMenuItemClickListener {
 
                when (it.itemId) {
@@ -61,17 +60,7 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
                        true
                    }
 
-                   R.id.menuDialogFragment -> {
 
-                       PopupMenu(requireContext(),toolbarFragmentMain, GravityCompat.END).apply {
-                           setOnMenuItemClickListener(this@MainFragment)
-                           // showAsDropDown(id)
-                           inflate(R.menu.menu_popup)
-                           show()
-                       }
-                       true
-
-                   }
 
                    R.id.autoWallpaperChanger -> {
 
@@ -80,16 +69,48 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
                        true
                    }
 
+                   R.id.rate -> {
+
+                       val intent = Intent(Intent.ACTION_VIEW)
+                       intent.setData(Uri.parse(("market://details?id=" + context?.getPackageName())))
+                       try {
+                           startActivity (intent)
+                       }
+                       catch(e:Exception){
+                       }
+                       true
+
+                   }
+
+                   R.id.about ->   {
+                       val url = "https://sites.google.com/view/techsneak-labs/about"
+                       val intent = Intent(Intent.ACTION_VIEW)
+                       intent.setData(Uri.parse(url))
+                       startActivity (intent)
+                       true
+                   }
+
+                   R.id.privacy ->  {
+                       val url = "https://sites.google.com/view/techsneak-labs/privacy-policy"
+                       val intent = Intent(Intent.ACTION_VIEW)
+                       intent.setData(Uri.parse(url))
+                       startActivity (intent)
+                       true
+                   }
+                   R.id.disclaimer ->  {
+                       val url = "https://sites.google.com/view/techsneak-labs/disclaimer"
+                       val intent = Intent(Intent.ACTION_VIEW)
+                       intent.setData(Uri.parse(url))
+                       startActivity (intent)
+                       true
+                   }
                    else -> false
                }
            }
 
 
 
-
-
        }
-
 
 
  }
@@ -108,9 +129,6 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
 
 
 
-
-
-
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             TAB_INDEX_ONE -> "Home"
@@ -120,70 +138,6 @@ class MainFragment : Fragment(R.layout.fragment_main),PopupMenu.OnMenuItemClickL
             else -> null
         }
     }
-
-
-
-
-
-
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-
-
-        when (item?.itemId) {
-
-            R.id.rate -> {
-                val url = "https://www.google.com"
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(("market://details?id=" + context?.getPackageName())))
-                try {
-                    startActivity (intent)
-                }
-                catch(e:Exception){
-                }
-
-
-            }
-
-            R.id.about ->   {
-                val url = "https://sites.google.com/view/techsneak-labs/about"
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(url))
-                startActivity (intent)
-
-            }
-
-            R.id.privacy ->  {
-                val url = "https://sites.google.com/view/techsneak-labs/privacy-policy"
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(url))
-                startActivity (intent)
-
-            }
-            R.id.disclaimer ->  {
-                val url = "https://sites.google.com/view/techsneak-labs/disclaimer"
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(url))
-                startActivity (intent)
-
-            }
-
-        }
-        return true
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

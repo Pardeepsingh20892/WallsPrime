@@ -27,7 +27,6 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
     private val viewModelCategoryExploreFragment: UnsplashViewModel by activityViewModels()
     private lateinit var navController: NavController
-    private lateinit var listener : NavController.OnDestinationChangedListener
     private var _exploreBinding: FragmentCategoryExploreBinding? = null
     private val exploreBinding get() = _exploreBinding!!
 
@@ -52,29 +51,16 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
             toolbarCategoryExplore.setupWithNavController(navController, appBarConfiguration)
 
 
+        // setup RecyclerView
 
-        listener = NavController.OnDestinationChangedListener { _, destination, _ ->
-
-            if (destination.id == R.id.categoryFragmentExploreFragment) {
-
-                toolbarCategoryExplore.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24_explore)
+            recyclerviewCategoryExplore.apply {
+                layoutManager = GridLayoutManager(context,2)
+                setHasFixedSize(true)
+                isVerticalScrollBarEnabled = false
+                itemAnimator?.changeDuration = 0
+                addItemDecoration(AdapterItemDecorator(2,10,true))
 
             }
-
-        }
-        navController.addOnDestinationChangedListener(listener)
-
-
-
-        // setup RecyclerView
-        val layoutManager = GridLayoutManager(context, 2)
-            recyclerviewCategoryExplore.layoutManager = layoutManager
-            recyclerviewCategoryExplore.setHasFixedSize(true)
-            recyclerviewCategoryExplore.addItemDecoration(AdapterItemDecorator(2,10,true))
-            recyclerviewCategoryExplore.isVerticalScrollBarEnabled = false
-            recyclerviewCategoryExplore.itemAnimator?.changeDuration = 0
-
-
 
         viewModelCategoryExploreFragment.exploreResults?.observe(viewLifecycleOwner, {
             lifecycleScope.launch {
@@ -153,10 +139,6 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
 
 
-
-
-
-
             if (viewModelCategoryExploreFragment.exploreCurrentPosition != null) {
             viewModelCategoryExploreFragment.exploreCurrentPosition?.let {
                 recyclerviewCategoryExplore.scrollToPosition(it)
@@ -168,16 +150,12 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
     }
 
 
-
-
     }
-
 
 
     override fun onDestroyView() {
         super.onDestroyView()
 
-        navController.removeOnDestinationChangedListener(listener)
         _exploreBinding = null
 
     }

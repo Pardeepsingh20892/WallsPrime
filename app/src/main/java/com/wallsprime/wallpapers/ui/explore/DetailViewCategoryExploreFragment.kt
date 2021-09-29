@@ -52,7 +52,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
 
     private lateinit var navController: NavController
-    private lateinit var listener : NavController.OnDestinationChangedListener
     private var _exploreBinding: FragmentDetailViewExploreBinding? = null
     private val exploreBinding get() = _exploreBinding!!
     private var getImageItem: String? = null
@@ -103,7 +102,8 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
         // set up toolbar
         toolbarFragmentCategoryDetailView.setupWithNavController( navController, appBarConfiguration)
-            toolbarFragmentCategoryDetailView.setOnMenuItemClickListener {
+        toolbarFragmentCategoryDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbarFragmentCategoryDetailView.setOnMenuItemClickListener {
 
                 when (it.itemId) {
                     R.id.Info -> {
@@ -119,27 +119,17 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
             }
 
 
-        listener = NavController.OnDestinationChangedListener { _, destination, _ ->
 
-            if (destination.id == R.id.detailViewCategoryExploreFragment){
-                toolbarFragmentCategoryDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24)
+
+            // set up RecyclerView
+            recyclerViewFragmentCategoryDetailView.apply {
+                layoutManager = GridLayoutManager(context,1)
+                hasFixedSize()
+                itemAnimator?.changeDuration = 0
+                isVerticalScrollBarEnabled = false
+                PagerSnapHelper().attachToRecyclerView(this)
+
             }
-        }
-        navController.addOnDestinationChangedListener(listener)
-
-
-
-
-        // set up RecyclerView
-        val layoutManager = GridLayoutManager(context,1)
-            recyclerViewFragmentCategoryDetailView.layoutManager = layoutManager
-            recyclerViewFragmentCategoryDetailView.hasFixedSize()
-            recyclerViewFragmentCategoryDetailView.itemAnimator?.changeDuration = 0
-            recyclerViewFragmentCategoryDetailView.isVerticalScrollBarEnabled = false
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerViewFragmentCategoryDetailView)
-
-
 
 
 
@@ -359,8 +349,6 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     override fun onDestroyView() {
         super.onDestroyView()
-
-        navController.removeOnDestinationChangedListener(listener)
         showSystemUI()
         _exploreBinding = null
 

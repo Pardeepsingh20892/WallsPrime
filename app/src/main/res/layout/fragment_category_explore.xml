@@ -16,7 +16,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarCategoryExplore"
-            style="@style/flareToolbar"
+            style="@style/flareToolbarOverlay"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"

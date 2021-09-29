@@ -49,7 +49,6 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     private val viewModelDetailViewFragment: UnsplashViewModel by activityViewModels()
     private lateinit var navController: NavController
-    private lateinit var listener : NavController.OnDestinationChangedListener
     private var _homeBinding: FragmentDetailViewHomeBinding? = null
     private val homeBinding get() = _homeBinding!!
     private var getImageItem: String? = null
@@ -106,6 +105,7 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
             // set up toolbar
             val appBarConfiguration = AppBarConfiguration(navController.graph)
             toolbarFragmentDetailView.setupWithNavController( navController, appBarConfiguration)
+            toolbarFragmentDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
             toolbarFragmentDetailView.setOnMenuItemClickListener {
 
                     when (it.itemId) {
@@ -113,35 +113,24 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
                             val uri = Uri.parse(userProfile)
                             val intent = Intent(Intent.ACTION_VIEW, uri)
                             startActivity(intent)
-
                             true
                         }
-
                         else -> false
                     }
                 }
 
 
 
-            listener = NavController.OnDestinationChangedListener { _, destination, _ ->
-                if (destination.id == R.id.detailViewFragment){
-                    toolbarFragmentDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24)
-                }
-            }
-            navController.addOnDestinationChangedListener(listener)
-
-
 
             // set up RecyclerView
-            val layoutManager = GridLayoutManager(context,1)
-            recyclerViewFragmentDetailView.layoutManager = layoutManager
-            recyclerViewFragmentDetailView.hasFixedSize()
-            recyclerViewFragmentDetailView.itemAnimator?.changeDuration = 0
-            recyclerViewFragmentDetailView.isVerticalScrollBarEnabled = false
-            val snapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(recyclerViewFragmentDetailView)
+            recyclerViewFragmentDetailView.apply {
+            layoutManager = GridLayoutManager(context,1)
+            hasFixedSize()
+            itemAnimator?.changeDuration = 0
+            isVerticalScrollBarEnabled = false
+            PagerSnapHelper().attachToRecyclerView(this)
 
-
+            }
 
            // submit data to paging adapter
             viewModelDetailViewFragment.homeResults.observe(viewLifecycleOwner,{
@@ -209,10 +198,8 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
 
 
-    private val requestPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+    private val requestPermissions = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-
                 createFileAndDownload(getImageItem!!, requireContext(),itemCode!!)
 
             }
@@ -366,8 +353,6 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-
-        navController.removeOnDestinationChangedListener(listener)
         // navController = null
          showSystemUI()
         _homeBinding = null

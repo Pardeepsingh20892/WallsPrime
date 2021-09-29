@@ -28,6 +28,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.wallsprime.wallpapers.R
+import com.wallsprime.wallpapers.adapters.common.AdapterItemDecorator
 import com.wallsprime.wallpapers.adapters.favourite.FavouriteDetailViewAdapter
 import com.wallsprime.wallpapers.data.viewmodels.UnsplashViewModel
 import com.wallsprime.wallpapers.databinding.FragmentDetailViewFavouriteBinding
@@ -51,7 +52,6 @@ class DetailViewFavouriteFragment : Fragment(R.layout.fragment_detail_view_favou
     private val viewModelDetailViewFavouriteFragment: UnsplashViewModel by activityViewModels()
 
     private lateinit var navController: NavController
-    private lateinit var listener : NavController.OnDestinationChangedListener
     private var _favouriteBinding: FragmentDetailViewFavouriteBinding? = null
     private val favouriteBinding get() = _favouriteBinding!!
     private var getImageItem: String? = null
@@ -104,6 +104,7 @@ class DetailViewFavouriteFragment : Fragment(R.layout.fragment_detail_view_favou
         favouriteBinding.apply {
         // set up toolbar
             toolbarFavouriteDetailView.setupWithNavController( navController, appBarConfiguration)
+            toolbarFavouriteDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
             toolbarFavouriteDetailView.setOnMenuItemClickListener {
 
                     when (it.itemId) {
@@ -120,25 +121,16 @@ class DetailViewFavouriteFragment : Fragment(R.layout.fragment_detail_view_favou
                 }
 
 
-        listener = NavController.OnDestinationChangedListener { _, destination, _ ->
-
-            if (destination.id == R.id.detailViewFavouriteFragment){
-                toolbarFavouriteDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24)
-            }
-        }
-
-        navController.addOnDestinationChangedListener(listener)
 
         // set up RecyclerView
-        val layoutManager = GridLayoutManager(context,1)
-            recyclerViewFavouriteDetailView.layoutManager = layoutManager
-            recyclerViewFavouriteDetailView.hasFixedSize()
-            recyclerViewFavouriteDetailView.itemAnimator?.changeDuration = 0
-            recyclerViewFavouriteDetailView.isVerticalScrollBarEnabled = false
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerViewFavouriteDetailView)
+            recyclerViewFavouriteDetailView.apply {
+                layoutManager = GridLayoutManager(context,1)
+                hasFixedSize()
+                itemAnimator?.changeDuration = 0
+                isVerticalScrollBarEnabled = false
+                PagerSnapHelper().attachToRecyclerView(this)
 
-
+            }
 
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -323,7 +315,6 @@ class DetailViewFavouriteFragment : Fragment(R.layout.fragment_detail_view_favou
 
     override fun onDestroyView() {
         super.onDestroyView()
-        navController.removeOnDestinationChangedListener(listener)
         showSystemUI()
         _favouriteBinding = null
 

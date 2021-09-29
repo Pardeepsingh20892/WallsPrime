@@ -35,13 +35,16 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
         exploreBinding.apply {
 
-        // set up recyclerView
-        val layoutManager = LinearLayoutManager(context)
-            RecyclerViewExploreFragment.layoutManager = layoutManager
-            RecyclerViewExploreFragment.hasFixedSize()
-            RecyclerViewExploreFragment.addItemDecoration(AdapterItemDecorator(1,20,true))
-            RecyclerViewExploreFragment.isVerticalScrollBarEnabled = false
 
+
+            // set up recyclerView
+            RecyclerViewExploreFragment.apply {
+            layoutManager = LinearLayoutManager(context)
+            hasFixedSize()
+            addItemDecoration(AdapterItemDecorator(1,20,true))
+            isVerticalScrollBarEnabled = false
+
+            }
 
           lifecycleScope.launchWhenStarted {
               val exploreFragmentRecyclerViewAdapter = ExploreAdapter(viewModelExploreFragment.getPhotoCategory(),
