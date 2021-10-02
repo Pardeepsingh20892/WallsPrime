@@ -88,19 +88,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                     when (val refresh = loadState.mediator?.refresh) {
                         is LoadState.Loading -> {
-                          //  SwipeRefreshLayoutHome.isRefreshing = true
-                          //  errorHome.isVisible = false
+                            recyclerviewFragmentHome.scrollToPosition(0)
 
 
                         }
                         is LoadState.NotLoading -> {
                             SwipeRefreshLayoutHome.isRefreshing = false
-                           // errorHome.isVisible = false
+
+
 
                         }
                         is LoadState.Error -> {
                             SwipeRefreshLayoutHome.isRefreshing = false
-                          //  errorHome.isVisible = true
+
 
                         }
 

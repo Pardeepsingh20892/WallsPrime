@@ -61,6 +61,7 @@ class HomeDetailViewAdapter(
 
                 Glide.with(itemView.context)
                     .load(url)
+                    .placeholder(R.drawable.ic_load_full)
                     .thumbnail(Glide.with(itemView.context).load(thumbnailUrl))
                     .centerCrop()
                     .into(imageViewSingleItemFullScreen)

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Prime" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="PrimeTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,8 +12,35 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Custom preference layout with toolbar. -->
-        <item name="preferenceTheme">@style/Theme.Flare.PreferenceThemeOverlay</item>
+        <item name="preferenceTheme">@style/Theme.Prime.PreferenceThemeOverlay</item>
 
     </style>
+
+
+
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+
+        // Set the splash screen background, animated icon, and animation duration.
+        <item name="windowSplashScreenBackground">@color/black</item>
+
+        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        // animated drawable. One of these is required.
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_load_full</item>
+        <item name="windowSplashScreenAnimationDuration">50</item>
+
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/PrimeTheme</item>
+    </style>
+
+
+
+
+
+
+
+
+
 
 </resources>

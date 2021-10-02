@@ -341,7 +341,7 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     override fun onResume() {
         super.onResume()
-        hideSystemUI()
+      //  hideSystemUI()
     }
 
 
@@ -349,7 +349,7 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     override fun onDestroyView() {
         super.onDestroyView()
-        showSystemUI()
+      //  showSystemUI()
         _exploreBinding = null
 
 

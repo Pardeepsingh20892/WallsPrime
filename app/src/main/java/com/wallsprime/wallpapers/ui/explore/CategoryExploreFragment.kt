@@ -88,18 +88,18 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
 
                     when (val refresh = loadState.mediator?.refresh) {
                         is LoadState.Loading -> {
-                           // SwipeRefreshLayoutExplore.isRefreshing = true
-                          //  errorExplore.isVisible = false
+                            recyclerviewCategoryExplore.scrollToPosition(0)
 
                         }
                         is LoadState.NotLoading -> {
                             SwipeRefreshLayoutExplore.isRefreshing = false
-                           // errorExplore.isVisible = false
+
+
 
                         }
                         is LoadState.Error -> {
                             SwipeRefreshLayoutExplore.isRefreshing = false
-                          //  errorExplore.isVisible = true
+
 
                         }
                     }

@@ -3,7 +3,7 @@
 
 
     <!-- Custom Preference Theme -->
-    <style name="Theme.Flare.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
+    <style name="Theme.Prime.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
         <item name="preferenceFragmentCompatStyle">
             @style/AppPreferenceFragmentCompatStyle
         </item>
@@ -17,20 +17,20 @@
     </style>
 
 
-    <style name="flareToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <style name="PrimeToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleTextColor">#FFFFFF</item>
         <item name="android:background">@color/black</item>
         <item name="android:elevation">0dp</item>
     </style>
 
-    <style name="flareToolbarMain" parent="flareToolbarOverlay">
+    <style name="PrimeToolbarMain" parent="PrimeToolbarOverlay">
         <item name="logo">@drawable/logo_white</item>
 
     </style>
 
 
 
-    <style name="flareToolbarOverlay" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+    <style name="PrimeToolbarOverlay" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <item name="android:background">@color/black</item>
         <item name="android:elevation">0dp</item>
         <item name="colorOnPrimary">@color/white</item>

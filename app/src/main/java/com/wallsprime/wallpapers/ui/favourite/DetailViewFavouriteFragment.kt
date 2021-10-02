@@ -308,14 +308,14 @@ class DetailViewFavouriteFragment : Fragment(R.layout.fragment_detail_view_favou
 
     override fun onResume() {
         super.onResume()
-        hideSystemUI()
+      //  hideSystemUI()
     }
 
 
 
     override fun onDestroyView() {
         super.onDestroyView()
-        showSystemUI()
+       // showSystemUI()
         _favouriteBinding = null
 
 

@@ -51,6 +51,7 @@ class CategoryDetailViewAdapter(
                 Glide.with(itemView.context)
                     .load(url)
                     .centerCrop()
+                    .placeholder(R.drawable.ic_load_full)
                     .thumbnail(Glide.with(itemView.context).load(thumbnailUrl))
                     .into(imageViewSingleItemFullScreen)
 

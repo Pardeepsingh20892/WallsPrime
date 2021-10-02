@@ -347,14 +347,14 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     override fun onResume() {
         super.onResume()
-        hideSystemUI()
+      //  hideSystemUI()
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         // navController = null
-         showSystemUI()
+       //  showSystemUI()
         _homeBinding = null
 
     }
@@ -363,10 +363,11 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     private fun hideSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
+
+
         WindowInsetsControllerCompat(requireActivity().window, homeBinding.root).let { controller ->
             controller.hide(WindowInsetsCompat.Type.statusBars())
-            controller.systemBarsBehavior =
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 
