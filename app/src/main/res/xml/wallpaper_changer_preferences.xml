@@ -25,7 +25,7 @@
 
 
     <PreferenceCategory
-        app:icon="@drawable/ic_outline_style_24"
+        app:icon="@drawable/ic_baseline_add_box_24"
         app:title="Wallpaper Source"
         app:dependency="autowallpaperchanger">
 
@@ -63,7 +63,7 @@
 
 
     <PreferenceCategory
-        app:icon="@drawable/outline_input_24"
+        app:icon="@drawable/ic_baseline_miscellaneous_services_24"
         app:title="Conditions"
         app:dependency="autowallpaperchanger">
 

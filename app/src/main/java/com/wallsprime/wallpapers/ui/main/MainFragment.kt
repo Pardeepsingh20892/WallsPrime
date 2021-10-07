@@ -36,13 +36,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
        mainBinding.apply {
 
-
         // set up viewPagerAdapterHomeFragment
            viewPager2FragmentMain.adapter = ViewPagerAdapterMainFragment(this@MainFragment)
-        TabLayoutMediator(tabLayoutFragmentMain, viewPager2FragmentMain) { tab, position ->
+           TabLayoutMediator(tabLayoutFragmentMain, viewPager2FragmentMain) { tab, position ->
             // tab.setIcon(getTabIcon(position))
             tab.text = getTabTitle(position)
-        }.attach()
+          }.attach()
 
 
 
@@ -53,14 +52,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
            toolbarFragmentMain.setOnMenuItemClickListener {
 
                when (it.itemId) {
+
                    R.id.settingFragment -> {
 
                        val direction = MainFragmentDirections.actionMainFragmentToSettingPerference()
                        navController.navigate(direction)
                        true
                    }
-
-
 
                    R.id.autoWallpaperChanger -> {
 
@@ -79,7 +77,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                        catch(e:Exception){
                        }
                        true
-
                    }
 
                    R.id.about ->   {
@@ -97,6 +94,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                        startActivity (intent)
                        true
                    }
+
                    R.id.disclaimer ->  {
                        val url = "https://sites.google.com/view/techsneak-labs/disclaimer"
                        val intent = Intent(Intent.ACTION_VIEW)
@@ -104,6 +102,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                        startActivity (intent)
                        true
                    }
+
                    else -> false
                }
            }

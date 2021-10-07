@@ -13,7 +13,7 @@ import com.wallsprime.wallpapers.data.viewmodels.UnsplashViewModel
 import com.wallsprime.wallpapers.databinding.FragmentExploreBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
 
@@ -41,7 +41,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             RecyclerViewExploreFragment.apply {
             layoutManager = LinearLayoutManager(context)
             hasFixedSize()
-            addItemDecoration(AdapterItemDecorator(1,20,true))
+            addItemDecoration(AdapterItemDecorator(1, 20))
             isVerticalScrollBarEnabled = false
 
             }

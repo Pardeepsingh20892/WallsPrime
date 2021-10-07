@@ -15,8 +15,8 @@ android {
         applicationId "com.wallsprime.wallpapers"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 12
-        versionName "11.0.1"
+        versionCode 15
+        versionName "11.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -115,7 +115,7 @@ dependencies {
 
 
     // work manager
-    implementation 'androidx.work:work-runtime-ktx:2.6.0-beta01'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0-rc01'
 
 
     // ktor
@@ -128,7 +128,7 @@ dependencies {
 
 
     // splash screen
-    implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
 
 
   // implementation "androidx.startup:startup-runtime:1.1.0-beta01"

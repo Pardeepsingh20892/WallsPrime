@@ -30,15 +30,9 @@ fun shareOrSetWallpaper(savedImgUri: Uri?, context: Context, code: Int) {
                 type = "image/jpeg"
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
-            ContextCompat.startActivity(
-                context,
-                Intent.createChooser(shareIntent, "Share with"),
-                null
-            )
-
+            ContextCompat.startActivity(context, Intent.createChooser(shareIntent, "Share with"), null)
         }
 
-        else -> return
 
     }
 

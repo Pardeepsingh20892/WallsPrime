@@ -1,7 +1,6 @@
 package com.wallsprime.wallpapers.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -20,15 +19,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
-@AndroidEntryPoint
+
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     private val viewModelHomeFragment: UnsplashViewModel by activityViewModels()
     private var _homeBinding: FragmentHomeBinding? = null
     private val homeBinding get() = _homeBinding!!
-
-
 
 
 
@@ -49,14 +46,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         homeBinding.apply {
 
-
             // setup RecyclerView
             recyclerviewFragmentHome.apply {
             layoutManager = GridLayoutManager(context,2)
             setHasFixedSize(true)
             isVerticalScrollBarEnabled = false
             itemAnimator?.changeDuration = 0
-            addItemDecoration(AdapterItemDecorator(2,10,true))
+            addItemDecoration(AdapterItemDecorator(2, 10))
 
             }
 

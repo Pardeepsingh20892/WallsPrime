@@ -1,6 +1,5 @@
 package com.wallsprime.wallpapers.ui.favourite
 
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -17,7 +16,7 @@ import com.wallsprime.wallpapers.databinding.FragmentFavouriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
-@AndroidEntryPoint
+
 class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
 
 
@@ -59,7 +58,7 @@ class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
                 setHasFixedSize(true)
                 isVerticalScrollBarEnabled = false
                 itemAnimator?.changeDuration = 0
-                addItemDecoration(AdapterItemDecorator(2,10,true))
+                addItemDecoration(AdapterItemDecorator(2, 10))
 
             }
 

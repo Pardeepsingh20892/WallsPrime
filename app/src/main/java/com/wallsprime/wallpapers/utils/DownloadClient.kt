@@ -31,6 +31,7 @@ suspend fun HttpClient.downloadFile(file: OutputStream, url: String): Flow<Downl
                 offset += currentRead
                 val progress = (offset * 100f / data.size).roundToInt()
                 emit(DownloadResult.Progress(progress))
+
             } while (currentRead > 0)
 
             response.close()
@@ -38,19 +39,24 @@ suspend fun HttpClient.downloadFile(file: OutputStream, url: String): Flow<Downl
             if (response.status.isSuccess()) {
                 withContext(Dispatchers.IO) {
                     file.write(data)
-
                 }
                 emit(DownloadResult.Success)
+
             } else {
                 emit(DownloadResult.Error("File not downloaded"))
             }
+
         } catch (e: TimeoutCancellationException) {
-
             emit(DownloadResult.Error("Connection timed out", e))
-        } catch (t: Throwable) {
 
+        } catch (t: Throwable) {
             emit(DownloadResult.Error("Failed to connect"))
+
+        } catch (e: Exception) {
+            emit(DownloadResult.Error("Failed", e))
+
         }
+
         finally {
             file.close()
         }

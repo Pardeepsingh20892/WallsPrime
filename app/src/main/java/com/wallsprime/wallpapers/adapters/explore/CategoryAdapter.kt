@@ -39,9 +39,6 @@ class CategoryAdapter (
                 }
             )
 
-
-
-
                 imageViewSingleItemImage.setOnClickListener {
                 val direction = CategoryFragmentExploreFragmentDirections.actionCategoryFragmentExploreFragmentToDetailViewCategoryExploreFragment(position)
                 it.findNavController().navigate(direction)
@@ -67,8 +64,7 @@ class CategoryAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val binding =
-            SingleItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = SingleItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(binding,
 

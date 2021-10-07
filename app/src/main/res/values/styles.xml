@@ -12,17 +12,9 @@
 
     <!-- Custom Preference Theme -->
     <style name="Theme.Prime.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
-        <item name="preferenceFragmentCompatStyle">
-            @style/AppPreferenceFragmentCompatStyle
-        </item>
-    </style>
-
-
-    <!-- Custom Style for PreferenceFragmentCompat -->
-    <style name="AppPreferenceFragmentCompatStyle"
-        parent="@style/PreferenceFragment.Material">
         <item name="android:layout">@layout/custom_setting_preference_layout</item>
     </style>
+
 
 
 
@@ -41,9 +33,9 @@
     <style name="PrimeToolbarOverlay" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <item name="android:background">@color/white</item>
         <item name="android:elevation">0dp</item>
-        <item name="colorOnPrimary">@color/black</item>
-
     </style>
+
+
 
 
 </resources>

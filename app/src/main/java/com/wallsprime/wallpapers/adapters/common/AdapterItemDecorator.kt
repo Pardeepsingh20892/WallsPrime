@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
-class AdapterItemDecorator( var spanCount:Int, var spacing:Int, var includeEdge:Boolean): RecyclerView.ItemDecoration()
+class AdapterItemDecorator( var spanCount:Int, var spacing:Int ): RecyclerView.ItemDecoration()
 {
     override fun getItemOffsets(
         outRect: Rect,
@@ -27,7 +27,7 @@ class AdapterItemDecorator( var spanCount:Int, var spacing:Int, var includeEdge:
                 outRect.left = spacing
 
             }
-            else{
+            else {
                 outRect.right = spacing
                 outRect.left = 0
 

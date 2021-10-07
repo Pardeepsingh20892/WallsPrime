@@ -11,13 +11,13 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.view.WindowInsets
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
+import androidx.core.view.*
+import androidx.core.view.WindowInsetsCompat.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -44,7 +44,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@AndroidEntryPoint
+
 class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     private val viewModelDetailViewFragment: UnsplashViewModel by activityViewModels()
@@ -106,8 +106,11 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
             val appBarConfiguration = AppBarConfiguration(navController.graph)
             toolbarFragmentDetailView.setupWithNavController( navController, appBarConfiguration)
             toolbarFragmentDetailView.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
-            toolbarFragmentDetailView.setOnMenuItemClickListener {
 
+
+
+
+            toolbarFragmentDetailView.setOnMenuItemClickListener {
                     when (it.itemId) {
                         R.id.Info -> {
                             val uri = Uri.parse(userProfile)
@@ -118,6 +121,8 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
                         else -> false
                     }
                 }
+
+
 
 
 
@@ -261,7 +266,7 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
                   val imageContentUri: Uri? = resolver.insert(imageCollection, imageDetails)
 
                        downloadFile(context,url, code,imageContentUri!!,resolver,imageDetails)
-
+                 // downloadFilexxx(context,url, code,imageContentUri!!,resolver,imageDetails,homeBinding,this)
 
               }
 
@@ -279,12 +284,10 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
            job.cancel()
        }
 
-        val ktor = HttpClient(Android)
-
 
         job =  lifecycleScope.launch(Dispatchers.IO) {
         context.contentResolver.openOutputStream(file)?.let { outputStream ->
-                ktor.downloadFile(outputStream, url).collect {
+            HttpClient(Android).downloadFile(outputStream, url).collect {
 
                     withContext(Dispatchers.Main) {
                         when (it) {
@@ -347,14 +350,14 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
 
     override fun onResume() {
         super.onResume()
-      //  hideSystemUI()
+        hideSystemUI()
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         // navController = null
-       //  showSystemUI()
+         showSystemUI()
         _homeBinding = null
 
     }
@@ -364,16 +367,37 @@ class DetailViewFragmentHome : Fragment(R.layout.fragment_detail_view_home) {
     private fun hideSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
 
+        homeBinding.toolbarFragmentDetailView.setOnApplyWindowInsetsListener { view, windowInsets ->
+            val layoutParams = view.layoutParams as ConstraintLayout.LayoutParams
+
+            val insets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                windowInsets.getInsets(WindowInsets.Type.statusBars()).top
+            } else {
+                windowInsets.systemWindowInsetTop
+            }
+
+            layoutParams.topMargin = insets
+
+            windowInsets
+        }
+
+
+
+/*
 
         WindowInsetsControllerCompat(requireActivity().window, homeBinding.root).let { controller ->
             controller.hide(WindowInsetsCompat.Type.statusBars())
             controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
+
+        */
+
+
     }
 
     private fun showSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
-        WindowInsetsControllerCompat(requireActivity().window, homeBinding.root).show(WindowInsetsCompat.Type.statusBars())
+      //  WindowInsetsControllerCompat(requireActivity().window, homeBinding.root).show(WindowInsetsCompat.Type.statusBars())
     }
 
 

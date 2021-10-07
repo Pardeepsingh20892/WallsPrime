@@ -2,21 +2,6 @@
 <resources>
 
 
-    <!-- Custom Preference Theme -->
-    <style name="Theme.Prime.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
-        <item name="preferenceFragmentCompatStyle">
-            @style/AppPreferenceFragmentCompatStyle
-        </item>
-    </style>
-
-
-    <!-- Custom Style for PreferenceFragmentCompat -->
-    <style name="AppPreferenceFragmentCompatStyle"
-        parent="@style/PreferenceFragment.Material">
-        <item name="android:layout">@layout/custom_setting_preference_layout</item>
-    </style>
-
-
     <style name="PrimeToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleTextColor">#FFFFFF</item>
         <item name="android:background">@color/black</item>
@@ -25,16 +10,12 @@
 
     <style name="PrimeToolbarMain" parent="PrimeToolbarOverlay">
         <item name="logo">@drawable/logo_white</item>
-
     </style>
 
 
 
     <style name="PrimeToolbarOverlay" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <item name="android:background">@color/black</item>
-        <item name="android:elevation">0dp</item>
-        <item name="colorOnPrimary">@color/white</item>
-
     </style>
 
 </resources>

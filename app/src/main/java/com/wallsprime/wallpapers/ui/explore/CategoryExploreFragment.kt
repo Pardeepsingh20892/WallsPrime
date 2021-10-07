@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
-@AndroidEntryPoint
+
 class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_explore) {
 
     private val viewModelCategoryExploreFragment: UnsplashViewModel by activityViewModels()
@@ -58,7 +58,7 @@ class CategoryFragmentExploreFragment : Fragment(R.layout.fragment_category_expl
                 setHasFixedSize(true)
                 isVerticalScrollBarEnabled = false
                 itemAnimator?.changeDuration = 0
-                addItemDecoration(AdapterItemDecorator(2,10,true))
+                addItemDecoration(AdapterItemDecorator(2, 10))
 
             }
 

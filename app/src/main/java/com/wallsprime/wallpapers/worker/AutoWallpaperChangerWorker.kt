@@ -42,7 +42,7 @@ class AutoWallpaperChangerWorker(
 
            when(source){
 
-               "random"   ->{
+               "random"   -> {
 
                    var getApi = provideUnsplashApi(provideRetrofit())
                    var getPage = Random.nextInt(1,50)
@@ -52,10 +52,8 @@ class AutoWallpaperChangerWorker(
                    imgUrl =   serverResults[getNum].urls.regular
                    getGlide(imgUrl)
 
-
-
                }
-               "favourite"   ->{
+               "favourite"   -> {
 
                    var getApi = provideUnsplashApi(provideRetrofit())
                    var getFav = getDB.favouriteDao().getFavouritePhotos()
@@ -65,7 +63,6 @@ class AutoWallpaperChangerWorker(
                    val serverResults = response.body()!!
                    imgUrl =   serverResults.urls.regular
                    getGlide(imgUrl)
-
 
                }
 
@@ -89,12 +86,10 @@ class AutoWallpaperChangerWorker(
 
             }
 
-
-
             Result.success()
 
         } catch (ex: Exception) {
-            Log.e("pardeep", "Error loading wallpaper", ex)
+            Log.e("wallpaper", "Error loading wallpaper", ex)
 
             Result.failure()
         }
@@ -113,8 +108,6 @@ class AutoWallpaperChangerWorker(
             .asBitmap()
             .load(imgUrl)
             .into(object : CustomTarget<Bitmap>() {
-
-
 
                 override fun onResourceReady(
                     resource: Bitmap,
@@ -140,14 +133,14 @@ class AutoWallpaperChangerWorker(
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && code =="home"){
 
-        WallpaperManager.getInstance(myContext).setBitmap(resource,null,false,
+             WallpaperManager.getInstance(myContext).setBitmap(resource,null,false,
              WallpaperManager.FLAG_SYSTEM)
 
         }
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && code =="lock"){
 
             WallpaperManager.getInstance(myContext).setBitmap(resource,null,false,
-                WallpaperManager.FLAG_LOCK)
+            WallpaperManager.FLAG_LOCK)
         }
 
         else{

@@ -30,16 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            app:tabGravity="start"
-            app:tabIndicator="@drawable/tab_indicator"
-            app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="@null"
-            app:tabIndicatorGravity="stretch"
 
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/white">
+            >
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"

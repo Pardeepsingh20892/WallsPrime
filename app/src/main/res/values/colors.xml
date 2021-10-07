@@ -11,4 +11,38 @@
     <color name="icon_color">#FF000000</color>
     <color name="card_color">#75ECEBEB</color>
     <color name="dark_blue">#040D40</color>
+    <color name="status_bar_color">#AE000000</color>
+    <color name="splash_screen_color">#040D40</color>
+    <color name="hot_orange_color">#FE645A</color>
+    <color name="hot_orange_color_dark">#FF3B2F</color>
+    <color name="hot_pink_color">#BD287D</color>
+    <color name="hot_pink_color_dark">#9C1060</color>
+    <color name="teal_color_dark">#015F5F</color>
+    <color name="teal_color_light">#017676</color>
+    <color name="ocean_color_dark">#2B939C</color>
+    <color name="ocean_color_light">#35B7C3</color>
+    <color name="ocean_color_bright">#5EFFA3</color>
+
+
+
+
+
+
+
+    <!--theme colors-->
+    <color name="owl_yellow_200">#ffeb46</color>
+    <color name="owl_yellow_400">#ffc000</color>
+    <color name="owl_yellow_500">#ffde03</color>
+    <color name="owl_yellow_dark_primary">#242316</color>
+
+    <color name="owl_blue_200">#91a4fc</color>
+    <color name="owl_blue_700">#0336ff</color>
+    <color name="owl_blue_800">#0035c9</color>
+    <color name="owl_blue_dark_primary">#1c1d24</color>
+
+    <color name="owl_pink_200">#ff7597</color>
+    <color name="owl_pink_500">#ff0266</color>
+    <color name="owl_pink_600">#d8004d</color>
+    <color name="owl_pink_dark_primary">#24191c</color>
+
 </resources>

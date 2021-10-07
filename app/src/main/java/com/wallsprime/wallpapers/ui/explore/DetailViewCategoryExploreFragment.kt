@@ -11,8 +11,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.view.WindowInsets
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -45,7 +47,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-@AndroidEntryPoint
+
 class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view_explore) {
 
     private val viewModelDetailViewCategoryExploreFragment: UnsplashViewModel by activityViewModels()
@@ -341,7 +343,7 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     override fun onResume() {
         super.onResume()
-      //  hideSystemUI()
+        hideSystemUI()
     }
 
 
@@ -349,7 +351,7 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     override fun onDestroyView() {
         super.onDestroyView()
-      //  showSystemUI()
+        showSystemUI()
         _exploreBinding = null
 
 
@@ -366,17 +368,27 @@ class DetailViewCategoryExploreFragment : Fragment(R.layout.fragment_detail_view
 
     private fun hideSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
-        WindowInsetsControllerCompat(requireActivity().window, exploreBinding.root).let { controller ->
-            controller.hide(WindowInsetsCompat.Type.statusBars())
-            controller.systemBarsBehavior =
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+        exploreBinding.toolbarFragmentCategoryDetailView.setOnApplyWindowInsetsListener { view, windowInsets ->
+            val layoutParams = view.layoutParams as ConstraintLayout.LayoutParams
+
+            val insets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                windowInsets.getInsets(WindowInsets.Type.statusBars()).top
+            } else {
+                windowInsets.systemWindowInsetTop
+            }
+
+            layoutParams.topMargin = insets
+
+            windowInsets
         }
+
+
     }
 
     private fun showSystemUI() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
-        WindowInsetsControllerCompat(requireActivity().window, exploreBinding.root).show(
-            WindowInsetsCompat.Type.statusBars())
+
     }
 
 
